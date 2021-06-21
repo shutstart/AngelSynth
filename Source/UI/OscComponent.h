@@ -74,7 +74,7 @@ private:
     using Attachment = juce::AudioProcessorValueTreeState::SliderAttachment;
     std::unique_ptr<Attachment> fmFreqAttachment;
     std::unique_ptr<Attachment> fmDepthAttachment;
-    
+
     juce::Label fmFreqLabel { "FM Freq", "FM Freq" };
     juce::Label fmDepthLabel { "FM Depth", "FM Depth" };
     

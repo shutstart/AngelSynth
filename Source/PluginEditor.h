@@ -12,7 +12,7 @@
 #include "PluginProcessor.h"
 #include "UI/AdsrComponent.h"
 #include "UI/OscComponent.h"
-
+#include "UI/FilterComponent.h"
 //==============================================================================
 /**
 */
@@ -26,19 +26,14 @@ public:
     //==============================================================================
     void paint (juce::Graphics&) override;
     void resized() override;
-    void setSliderParams(juce::Slider& slider);
 
 private:
-    
-//    juce::ComboBox oscSelector;
-//    std::unique_ptr<juce::AudioProcessorValueTreeState::ComboBoxAttachment> oscSelAttachment;
-    
-    juce:: Colour electronBlue = juce::Colour(9, 132, 227);
-    juce:: Colour draculaOrchid = juce::Colour (30, 39, 46);
     
     AngelSynthAudioProcessor& audioProcessor;
     OscComponent osc;
     AdsrComponent adsr;
+    AdsrComponent filterAdsr;
+    FilterComponent filter;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AngelSynthAudioProcessorEditor)
 };

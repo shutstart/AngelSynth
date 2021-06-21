@@ -11,36 +11,40 @@
 
 //==============================================================================
 AngelSynthAudioProcessorEditor::AngelSynthAudioProcessorEditor (AngelSynthAudioProcessor& p)
-    : AudioProcessorEditor (&p), audioProcessor (p), osc(audioProcessor.apvts, "OSC1WAVETYPE", "OSC1FMFREQ","OSC1FMDEPTH"), adsr(audioProcessor.apvts)
+: AudioProcessorEditor (&p)
+, audioProcessor (p)
+, osc (audioProcessor.apvts, "OSC1WAVETYPE", "OSC1FMFREQ", "OSC1FMDEPTH")
+, adsr ("Amp Envelope", audioProcessor.apvts, "ATTACK", "DECAY", "SUSTAIN", "RELEASE")
+, filterAdsr ("Mod Envelope", audioProcessor.apvts, "FILTERATTACK", "FILTERDECAY", "FILTERSUSTAIN", "FILTERRELEASE")
+, filter (audioProcessor.apvts, "FILTERTYPE", "FILTERFREQ", "FILTERRES")
 {
-    setSize (400, 300);
-//    using SliderAttachment = juce::AudioProcessorValueTreeState::SliderAttachment;
-    
-//    oscSelAttachment = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(audioProcessor.apvts, "OSC", oscSelector);
-    // Make Oscillator Selector Visible
-    addAndMakeVisible(osc);
-    
-    // Make ADSR visible
-    addAndMakeVisible(adsr);
-
+    setSize (620, 500);
+    addAndMakeVisible (osc);
+    addAndMakeVisible (adsr);
+    addAndMakeVisible (filterAdsr);
+    addAndMakeVisible (filter);
 }
 
 AngelSynthAudioProcessorEditor::~AngelSynthAudioProcessorEditor()
 {
-    //Set ADSR bounds
 }
 
 //==============================================================================
 void AngelSynthAudioProcessorEditor::paint (juce::Graphics& g)
 {
-    g.fillAll(draculaOrchid);
+    g.fillAll (juce::Colours::black);
 }
 
 void AngelSynthAudioProcessorEditor::resized()
 {
-    osc.setBounds(10, 10, 180, 200);
-
-    adsr.setBounds(getWidth()/2,0,getWidth()/2,getHeight() / 2);
+    const auto paddingX = 5;
+    const auto paddingY = 35;
+    const auto paddingY2 = 235;
+    
+    osc.setBounds (paddingX, paddingY, 300, 200);
+    adsr.setBounds (osc.getRight(), paddingY, 300, 200);
+    filterAdsr.setBounds (paddingX, paddingY2, 300, 200);
+    filter.setBounds (filterAdsr.getRight(), paddingY2, 300, 200);
 }
 
 
