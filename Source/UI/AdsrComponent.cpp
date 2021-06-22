@@ -28,14 +28,14 @@ AdsrComponent::~AdsrComponent()
 
 void AdsrComponent::paint (juce::Graphics& g)
 {
-    auto bounds = getLocalBounds().reduced (5);
-    auto labelSpace = bounds.removeFromTop (25.0f);
-    
-    g.fillAll (juce::Colours::black);
+    auto bounds = getLocalBounds().reduced(10);
+    juce::Rectangle<float> localBound = bounds.toFloat();
+    g.setColour (juce::Colours::black);
+    g.fillRect(localBound);
     g.setColour (juce::Colours::white);
     g.setFont (20.0f);
-    g.drawText (componentName, labelSpace.withX (5), juce::Justification::left);
     g.drawRoundedRectangle (bounds.toFloat(), 5.0f, 2.0f);
+    
 }
 
 void AdsrComponent::resized()
@@ -68,7 +68,7 @@ using Attachment = juce::AudioProcessorValueTreeState::SliderAttachment;
 void AdsrComponent::setSliderWithLabel (juce::Slider& slider, juce::Label& label, juce::AudioProcessorValueTreeState& apvts, juce::String paramId, std::unique_ptr<Attachment>& attachment)
 {
     slider.setSliderStyle (juce::Slider::SliderStyle::LinearVertical);
-    slider.setTextBoxStyle (juce::Slider::TextBoxBelow, true, 50, 25);
+    slider.setTextBoxStyle (juce::Slider::NoTextBox,true,0,0);
     addAndMakeVisible (slider);
     
     attachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, paramId, slider);

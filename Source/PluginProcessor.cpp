@@ -142,7 +142,7 @@ void AngelSynthAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
     juce::ScopedNoDenormals noDenormals;
     auto totalNumInputChannels  = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
-
+    keyboardState.processNextMidiBuffer(midiMessages, 0, buffer.getNumSamples(), true);
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
     
@@ -152,6 +152,7 @@ void AngelSynthAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
         {
             if (auto voice = dynamic_cast<SynthVoice*>(synth.getVoice(i)))
             {
+                
                 // Osc
                 auto& oscWaveChoice = *apvts.getRawParameterValue ("OSC1WAVETYPE");
                 

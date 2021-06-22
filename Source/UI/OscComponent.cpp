@@ -31,23 +31,27 @@ OscComponent::~OscComponent()
 
 void OscComponent::paint (juce::Graphics& g)
 {
-    g.setColour(juce::Colours::white);
-    
-    g.drawRect(getLocalBounds());
+    auto bounds = getLocalBounds().reduced (10);
+    juce::Rectangle<float> localBound = bounds.toFloat();
+    g.setColour (juce::Colours::black);
+    g.fillRect(localBound);
+    g.setColour (juce::Colours::white);
+    g.drawRoundedRectangle (bounds.toFloat(), 5.0f, 2.0f);
 }
 
 void OscComponent::resized()
 {
     const int sliderPosY = 80;
-    const int sliderWidth = 80;
-    const int sliderHeight = 80;
+    const int sliderWidth = 60;
+    const int sliderHeight = 60;
     const int labelYOffset = 20;
     const int labelHeight = 20;
-    oscWaveSelector.setBounds(10, 10, 90, 20);
-    fmFreqSlider.setBounds(0, sliderPosY, sliderWidth, sliderHeight);
+    const int paddingX = 20;
+    oscWaveSelector.setBounds((getWidth())/2, 20, 90, 20);
+    fmFreqSlider.setBounds(paddingX, sliderPosY, sliderWidth, sliderHeight);
     fmFreqLabel.setBounds(fmFreqSlider.getX(), fmFreqSlider.getY() - labelYOffset, sliderWidth, labelHeight);
     
-    fmDepthSlider.setBounds(fmFreqSlider.getRight(), sliderPosY, sliderWidth, sliderHeight);
+    fmDepthSlider.setBounds(fmFreqSlider.getRight()+getWidth()/2-paddingX, sliderPosY, sliderWidth, sliderHeight);
     fmDepthLabel.setBounds(fmDepthSlider.getX(), fmDepthSlider.getY() - labelYOffset, sliderWidth, labelHeight);
     
     
@@ -58,7 +62,7 @@ using Attachment = juce::AudioProcessorValueTreeState::SliderAttachment;
 void OscComponent::setSliderWithLabel(juce::Slider& slider, juce::Label& label, juce::AudioProcessorValueTreeState& apvts, juce::String paramId, std::unique_ptr<Attachment>& attachment)
 {
     slider.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
-    slider.setTextBoxStyle(juce::Slider::TextBoxBelow, true, 50, 25);
+    slider.setTextBoxStyle(juce::Slider::NoTextBox, true, 0,0);
     addAndMakeVisible(slider);
     slider.setLookAndFeel(&oscFeel);
     

@@ -11,6 +11,7 @@
 #include <JuceHeader.h>
 #include "SynthVoice.h"
 #include "SynthSound.h"
+
 //==============================================================================
 /**
 */
@@ -20,7 +21,7 @@ public:
     //==============================================================================
     AngelSynthAudioProcessor();
     ~AngelSynthAudioProcessor() override;
-
+    
     //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
     void releaseResources() override;
@@ -55,9 +56,10 @@ public:
     void setStateInformation (const void* data, int sizeInBytes) override;
     
     juce::AudioProcessorValueTreeState apvts;
-    
+    juce::MidiKeyboardState keyboardState;
 private:
     juce::Synthesiser synth;
+    
     juce::AudioProcessorValueTreeState::ParameterLayout createParams();
     
     //==============================================================================

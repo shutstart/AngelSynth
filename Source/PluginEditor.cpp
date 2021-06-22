@@ -17,12 +17,15 @@ AngelSynthAudioProcessorEditor::AngelSynthAudioProcessorEditor (AngelSynthAudioP
 , adsr ("Amp Envelope", audioProcessor.apvts, "ATTACK", "DECAY", "SUSTAIN", "RELEASE")
 , filterAdsr ("Mod Envelope", audioProcessor.apvts, "FILTERATTACK", "FILTERDECAY", "FILTERSUSTAIN", "FILTERRELEASE")
 , filter (audioProcessor.apvts, "FILTERTYPE", "FILTERFREQ", "FILTERRES")
+, keyboardComponent (audioProcessor.keyboardState, juce::MidiKeyboardComponent::horizontalKeyboard)
+
 {
-    setSize (620, 500);
+    setSize (600, 500);
     addAndMakeVisible (osc);
     addAndMakeVisible (adsr);
     addAndMakeVisible (filterAdsr);
     addAndMakeVisible (filter);
+    addAndMakeVisible (keyboardComponent);
 }
 
 AngelSynthAudioProcessorEditor::~AngelSynthAudioProcessorEditor()
@@ -38,13 +41,20 @@ void AngelSynthAudioProcessorEditor::paint (juce::Graphics& g)
 void AngelSynthAudioProcessorEditor::resized()
 {
     const auto paddingX = 5;
-    const auto paddingY = 35;
-    const auto paddingY2 = 235;
+    const auto paddingY = 10;
     
-    osc.setBounds (paddingX, paddingY, 300, 200);
-    adsr.setBounds (osc.getRight(), paddingY, 300, 200);
-    filterAdsr.setBounds (paddingX, paddingY2, 300, 200);
-    filter.setBounds (filterAdsr.getRight(), paddingY2, 300, 200);
+    
+    const auto bounds = getLocalBounds().reduced(5);
+    const auto width = (bounds.getWidth())/2;
+    const auto height = (bounds.getHeight()-80)/2;
+    const auto paddingY2 = height;
+    
+    
+    osc.setBounds (paddingX, paddingY, width, height);
+    adsr.setBounds (osc.getRight()+paddingX, paddingY, width, height);
+    filterAdsr.setBounds (paddingX, paddingY2, width, height);
+    filter.setBounds (filterAdsr.getRight()+paddingX, paddingY2, width, height);
+    keyboardComponent.setBounds(paddingX, paddingY2+height, getWidth(), 90);
 }
 
 

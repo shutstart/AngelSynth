@@ -42,6 +42,5 @@ private:
     AdsrData filterAdsr;
     FilterData filter;
     juce::dsp::Gain<float> gain;
-    
     bool isPrepared { false };
 };
