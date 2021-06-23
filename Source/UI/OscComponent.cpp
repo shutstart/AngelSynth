@@ -17,8 +17,10 @@ OscComponent::OscComponent(juce::AudioProcessorValueTreeState& apvts,juce::Strin
     juce::StringArray choices {"Sine","Saw","Square"};
     oscWaveSelector.addItemList(choices, 1);
     addAndMakeVisible(oscWaveSelector);
-    
+
     oscWaveSelectorAttachment = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(apvts, waveSelectorId,oscWaveSelector);
+    
+//    setSliderWithLabel(oscWaveSelector, oscSelectorLabel, apvts, waveSelectorId, oscSelectorAttachment);
     
     setSliderWithLabel(fmFreqSlider, fmFreqLabel, apvts, fmFreqId, fmFreqAttachment);
     setSliderWithLabel(fmDepthSlider, fmDepthLabel, apvts, fmDepthId, fmDepthAttachment);
@@ -36,6 +38,7 @@ void OscComponent::paint (juce::Graphics& g)
     g.setColour (juce::Colours::black);
     g.fillRect(localBound);
     g.setColour (juce::Colours::white);
+    juce::StringArray waveChoice { "Sine", "Saw", "Square" };
     g.drawRoundedRectangle (bounds.toFloat(), 5.0f, 2.0f);
 }
 
@@ -47,11 +50,13 @@ void OscComponent::resized()
     const int labelYOffset = 20;
     const int labelHeight = 20;
     const int paddingX = 20;
-    oscWaveSelector.setBounds((getWidth())/2, 20, 90, 20);
+    
     fmFreqSlider.setBounds(paddingX, sliderPosY, sliderWidth, sliderHeight);
     fmFreqLabel.setBounds(fmFreqSlider.getX(), fmFreqSlider.getY() - labelYOffset, sliderWidth, labelHeight);
     
+    oscWaveSelector.setBounds(fmFreqSlider.getRight()+getWidth()/8-10, sliderPosY-labelYOffset, 80, 20);
     fmDepthSlider.setBounds(fmFreqSlider.getRight()+getWidth()/2-paddingX, sliderPosY, sliderWidth, sliderHeight);
+    
     fmDepthLabel.setBounds(fmDepthSlider.getX(), fmDepthSlider.getY() - labelYOffset, sliderWidth, labelHeight);
     
     

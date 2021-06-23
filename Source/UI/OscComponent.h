@@ -67,14 +67,15 @@ public:
 private:
     juce::ComboBox oscWaveSelector;
     std::unique_ptr<juce::AudioProcessorValueTreeState::ComboBoxAttachment> oscWaveSelectorAttachment;
-    
+//    juce::Slider oscWaveSelector;
     juce::Slider fmFreqSlider;
     juce::Slider fmDepthSlider;
     OscLookAndFeel oscFeel;
     using Attachment = juce::AudioProcessorValueTreeState::SliderAttachment;
+//    std::unique_ptr<Attachment> oscSelectorAttachment;
     std::unique_ptr<Attachment> fmFreqAttachment;
     std::unique_ptr<Attachment> fmDepthAttachment;
-
+    
     juce::Label fmFreqLabel { "FM Freq", "FM Freq" };
     juce::Label fmDepthLabel { "FM Depth", "FM Depth" };
     

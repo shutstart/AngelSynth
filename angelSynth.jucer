@@ -6,6 +6,7 @@
               companyName="Oasis">
   <MAINGROUP id="ibXnZP" name="angelSynth">
     <GROUP id="{BE9C1EFD-A5E5-E21C-4B17-CA372DBF068F}" name="Source">
+      <FILE id="dawE0q" name="Angel Synth.png" compile="0" resource="1" file="Source/Angel Synth.png"/>
       <GROUP id="{62095771-E67B-262E-61D5-F94D2E7F7097}" name="UI">
         <FILE id="uALP30" name="AdsrComponent.cpp" compile="1" resource="0"
               file="Source/UI/AdsrComponent.cpp"/>
@@ -40,7 +41,7 @@
   </MAINGROUP>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="Builds/MacOSX">
+    <XCODE_MAC targetFolder="Builds/MacOSX" smallIcon="dawE0q" bigIcon="dawE0q">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug" targetName="angelSynth"/>
         <CONFIGURATION isDebug="0" name="Release" targetName="angelSynth"/>

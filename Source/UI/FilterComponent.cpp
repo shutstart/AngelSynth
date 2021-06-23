@@ -47,19 +47,20 @@ void FilterComponent::paint (juce::Graphics& g)
 
 void FilterComponent::resized()
 {
-    const auto startY = 55;
+    const auto startY = 40;
     const auto sliderWidth = 60;
     const auto sliderHeight = 60;
     const auto labelYOffset = 20;
     const auto labelHeight = 20;
+    const auto paddingX = 90;
     
-    filterTypeSelector.setBounds (10, startY + 5, 90, 30);
+    filterTypeSelector.setBounds (20, startY + 5, 100, 30);
     filterSelectorLabel.setBounds (10, startY - labelYOffset, 90, labelHeight);
     
-    filterFreqSlider.setBounds (filterTypeSelector.getRight(), startY, sliderWidth, sliderHeight);
+    filterFreqSlider.setBounds (filterTypeSelector.getRight()+paddingX, startY, sliderWidth, sliderHeight);
     filterSelectorLabel.setBounds (filterFreqSlider.getX(), filterFreqSlider.getY() - labelYOffset, filterFreqSlider.getWidth(), labelHeight);
 
-    filterResSlider.setBounds (filterFreqSlider.getRight(), startY, sliderWidth, sliderHeight);
+    filterResSlider.setBounds (filterFreqSlider.getX(), filterFreqSlider.getY()+getHeight()/2-10, sliderWidth, sliderHeight);
     filterResLabel.setBounds (filterResSlider.getX(), filterResSlider.getY() - labelYOffset, filterResSlider.getWidth(), labelHeight);
 }
 
