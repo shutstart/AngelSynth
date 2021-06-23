@@ -23,7 +23,7 @@ Angel Synth is currently supported only on MacOs (Apple silicon and intel).
 ### How to download?
 Use <a href = "https://drive.google.com/drive/folders/1e-PWcoWgZxzCWzksKvNORnVGtAd-tVVo?usp=sharing"> <b>This Link</b> </a> to download the AU componenet and save it to the folder where AU plugins are installed
 
-(Typically /Library/Audio/Plug-ins/Components)
+Typically (/Library/Audio/Plug-ins/Components)
 
 
 #### Plugin:
