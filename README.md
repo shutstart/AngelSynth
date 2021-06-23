@@ -6,17 +6,22 @@ Angel Synth is a lightweight Monophonic synthesiser which was build to keep simp
 
 ## Features:
 -> Simplistic design.
--> 3 High Quality Osciallators : (Sine, Square, Saw)
+
+-> 3 High Quality Osciallators : (Sine, Square, Saw).
+
 -> Frequency Modulation available.
+
 -> State variable filter (Low-Pass, High-Pass, Band-pass) with adjustable Q-factor.
+
 -> Filter Modulation with Attack, Decay, Sustain, Release (ADSR).
+
 -> Amplitude Modulaiton with ADSR.
 
 ### Support
 Angel Synth is currently supported only on MacOs (Apple silicon and intel).
 
 ### How to download?
-Use <a href = "https://drive.google.com/drive/folders/1e-PWcoWgZxzCWzksKvNORnVGtAd-tVVo?usp=sharing"> This Link </a> to download the AU componenet and save it to the folder where AU plugins are installed
+Use <a href = "https://drive.google.com/drive/folders/1e-PWcoWgZxzCWzksKvNORnVGtAd-tVVo?usp=sharing"> <b>This Link</b> </a> to download the AU componenet and save it to the folder where AU plugins are installed
 (Typically /Library/Audio/Plug-ins/Components)
 
 
