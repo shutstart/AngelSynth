@@ -6,7 +6,6 @@
               companyName="Oasis">
   <MAINGROUP id="ibXnZP" name="angelSynth">
     <GROUP id="{BE9C1EFD-A5E5-E21C-4B17-CA372DBF068F}" name="Source">
-      <FILE id="dawE0q" name="Angel Synth.png" compile="0" resource="1" file="Source/Angel Synth.png"/>
       <GROUP id="{62095771-E67B-262E-61D5-F94D2E7F7097}" name="UI">
         <FILE id="uALP30" name="AdsrComponent.cpp" compile="1" resource="0"
               file="Source/UI/AdsrComponent.cpp"/>
@@ -38,6 +37,7 @@
       <FILE id="jJVfPK" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
       <FILE id="vvxmnp" name="SynthSound.h" compile="0" resource="0" file="Source/SynthSound.h"/>
     </GROUP>
+    <FILE id="ZK9u0z" name="Angel Synth.png" compile="0" resource="1" file="Source/Angel Synth.png"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
   <EXPORTFORMATS>
