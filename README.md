@@ -18,7 +18,7 @@ Angel Synth is a lightweight Monophonic synthesizer which was build to keep simp
 -> Amplitude Modulaiton with ADSR.
 
 ### Support
-Angel Synth is currently supported only on MacOs (Apple silicon and intel).
+Angel Synth is currently supported only on MacOs (Apple M1 and Intel).
 
 ### How to download?
 Use <a href = "https://drive.google.com/drive/folders/1e-PWcoWgZxzCWzksKvNORnVGtAd-tVVo?usp=sharing"> <b>This Link</b> </a> to download the AU componenet and save it to the folder where AU plugins are installed
